@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <link rel="icon" href="images/SonbahisIcon.webp" type="image/webp">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sonbahis — Telegram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #121416;
+      color: #fff;
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 8L8 30l22 22 22-22L30 8z' fill='%23ffffff' fill-opacity='0.02'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* Channel card - Telegram style */
+    .channel-card {
+      background: #1c1e20;
+      border-radius: 24px;
+      padding: 32px 24px 28px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+      margin-bottom: 28px;
+    }
+
+    .channel-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      border: 3px solid #2a2c2e;
+      overflow: hidden;
+      background: #1f2123;
+    }
+
+    .channel-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .channel-card h1 {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .channel-card .subs {
+      font-size: 0.875rem;
+      color: #8a8c8e;
+      margin-bottom: 20px;
+    }
+
+    .channel-card .desc {
+      font-size: 0.9375rem;
+      color: #fff;
+      line-height: 1.55;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .channel-card .desc a {
+      color: #2a99ec;
+      text-decoration: none;
+    }
+
+    .channel-card .desc a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: opacity 0.2s ease, background 0.2s ease;
+      border: none;
+    }
+
+    .btn + .btn {
+      margin-top: 12px;
+    }
+
+    .btn-primary {
+      background: #2a99ec;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #2a99ec;
+      border: 2px solid #2a99ec;
+    }
+
+    .btn-outline:hover {
+      background: rgba(42, 153, 236, 0.12);
+    }
+
+    .btn-orange {
+      background: #f97316;
+      color: #fff;
+    }
+
+    .btn-orange:hover {
+      background: #ea580c;
+      opacity: 1;
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* Announcements / Posts */
+    .section-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #8a8c8e;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+      padding-left: 4px;
+    }
+
+    .posts {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .post {
+      background: #1c1e20;
+      border-radius: 16px;
+      padding: 16px 18px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .post-date {
+      font-size: 0.75rem;
+      color: #6a6c6e;
+      margin-bottom: 8px;
+    }
+
+    .post-text {
+      font-size: 0.9375rem;
+      color: #d0d2d4;
+      line-height: 1.5;
+    }
+
+    .post-text strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .post-text a {
+      color: #2a99ec;
+      text-decoration: none;
+    }
+
+    .post-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <!-- Telegram channel-style card -->
+    <div class="channel-card">
+      <div class="channel-logo">
+        <img src="https://i.hizliresim.com/n8nohh7.jpeg" alt="sonbahis" width="100" height="100">
+      </div>
+      <h1>Son</h1>
+      <p class="subs">21.390 abone</p>
+      <p class="desc">
+        Sonbahis Resmi Giriş 2026<br>
+        Güncel giriş adresi: <a href="https://xn--823tmebet-j5a.com/tr">https://xn--823tmebet-j5a.com/tr</a>
+      </p>
+      <a href="https://xn--823tmebet-j5a.com/tr" class="btn btn-orange">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Güncel Giriş Adresimiz
+      </a>
+      <a href="https://xn--823tmebet-j5a.com/tr" target="_blank" rel="noopener" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.96-.75 3.78-1.65 6.31-2.74 7.58-3.27 3.61-1.51 4.35-1.77 4.84-1.78.11 0 .35.03.5.16.13.1.17.24.18.34z"/></svg>
+        Telegram'da Görüntüle
+      </a>
+    </div>
+
+    <!-- Duyuru postları -->
+    <p class="section-label">Son Duyurular</p>
+    <div class="posts">
+      <article class="post">
+        <p class="post-date">30 Oca 2026, 11:00</p>
+        <p class="post-text"><strong>Güvenli giriş uyarısı.</strong> Resmi Telegram kanalımız ve bu sayfadaki linkler dışındaki adreslere itibar etmeyin. Güncel adres her zaman kanalda paylaşılmaktadır.</p>
+      </article>
+      <article class="post">
+        <p class="post-date">25 Oca 2026, 10:00</p>
+        <p class="post-text"><strong>%20 Kripto Bonusu.</strong> Bitcoin, USDT veya diğer kripto paralarla yapacağınız ilk yatırımda %20 bonus kazanın. Hemen <a href="https://xn--823tmebet-j5a.com/tr">giriş</a> yapıp kampanyadan yararlanın.</p>
+      </article>
+      <article class="post">
+        <p class="post-date">24 Oca 2026, 16:30</p>
+        <p class="post-text"><strong>%10 Kayıp Bonusu.</strong> Haftalık kayıplarınızın %10’u bonus olarak hesabınıza yansıtılıyor. Her Pazartesi otomatik hesaplanıp yatırılıyor. Kaçırmayın!</p>
+      </article>
+      <article class="post">
+        <p class="post-date">23 Oca 2026, 12:00</p>
+        <p class="post-text"><strong>Hoş geldin paketi.</strong> Yeni üyelere özel: İlk yatırımda %100’e varan bonus + 250 free spin. Şartlar uygundur. Detaylar sitede.</p>
+      </article>
+      <article class="post">
+        <p class="post-date">22 Oca 2026, 14:15</p>
+        <p class="post-text"><strong>Canlı bahis cashback.</strong> Canlı maçlarda kaybettiğiniz bahislerin %5’i her hafta hesabınıza iade. Süresiz kampanya, tüm canlı bahislerde geçerli.</p>
+      </article>
+      <article class="post">
+        <p class="post-date">21 Oca 2026, 09:45</p>
+        <p class="post-text"><strong>VIP çevrimsiz bonus.</strong> VIP üyelerimize özel çevrim şartı olmadan kullanılabilen haftalık bonus aktif. Seviyenize göre bonus miktarı artıyor.</p>
+      </article>
+    </div>
+  </div>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"761a8f703c4f4d428463c0614c75d536","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
