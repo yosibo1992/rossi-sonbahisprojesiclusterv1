@@ -2,7 +2,7 @@
 # Son güncelleme: 2026-02-15
 #
 # Bu dosyayı HER İKİ domain'e koyun:
-#   - https://123helpline.com//robots.txt
+#   - https://123helpline.com/robots.txt
 #   - https://tr.son-girisadresi.it.com/robots.txt
 
 User-agent: *
@@ -17,4 +17,4 @@ Disallow: /*.json$
 Disallow: /tr.html
 Disallow: /index2.html
 
-Sitemap: https://123helpline.com//sitemap.xml
+Sitemap: https://123helpline.com/sitemap.xml
