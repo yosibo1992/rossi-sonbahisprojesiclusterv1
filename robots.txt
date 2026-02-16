@@ -1,0 +1,20 @@
+# Sonbahis Erişim Rehberi — robots.txt
+# Son güncelleme: 2026-02-15
+#
+# Bu dosyayı HER İKİ domain'e koyun:
+#   - https://123helpline.com//robots.txt
+#   - https://tr.son-girisadresi.it.com/robots.txt
+
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /tmp/
+Disallow: /cgi-bin/
+Disallow: /*.json$
+
+# tr.html ve index2.html yönlendirme hedefleri — indekslemeye gerek yok
+Disallow: /tr.html
+Disallow: /index2.html
+
+Sitemap: https://123helpline.com//sitemap.xml
